@@ -8,6 +8,7 @@ const NewsList =(props)=>{
     ))
     return(
         <>
+            {props.children}
             {news}
         </>
     )

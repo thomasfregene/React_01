@@ -25,9 +25,10 @@ class App extends Component {
     return(
       <>
         <Header/>
-        <NewsList 
-        news={state.news}
-        />
+        <NewsList news={state.news}>
+          <br/>
+          <h3>This is the news</h3>
+        </NewsList>
         <Footer
         footerText={state.footerText} 
         />
