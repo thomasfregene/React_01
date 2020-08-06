@@ -15,17 +15,30 @@ class App extends Component {
 
     this.state ={
       news: JSON,
-      footerText: 'I am the main footer'
+      footerText: 'I am the main footer',
+      filtered: []
     } 
   }
 
+  getKeywords=(event)=>{
+    let keywords = event.target.value;
+    let filtered = this.state.news.filter((item)=>{
+      return item.title.indexOf(keywords) > -1
+    })
+    this.setState({
+      filtered
+    })
+  }
 
   render(){
+    console.log(this.state)
     const state = this.state;
+    let newsFiltered = state.filtered;
+    let newsAll = state.news;
     return(
       <>
-        <Header/>
-        <NewsList news={state.news}>
+        <Header keywords={this.getKeywords}/>
+        <NewsList news={newsFiltered.length === 0 ? newsAll : newsFiltered}>
           <br/>
           <h3>This is the news</h3>
         </NewsList>
